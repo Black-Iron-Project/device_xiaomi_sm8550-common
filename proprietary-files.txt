@@ -850,6 +850,7 @@ odm/lib64/libcom.xiaomi.mawutilsold.so
 odm/lib64/libcom.xiaomi.metadatautils.so
 odm/lib64/libcom.xiaomi.pluginutils.so
 odm/lib64/libcommonchiutils.so
+odm/lib64/libssccalapi@2.0.so
 odm/lib64/libdeflicker.so
 odm/lib64/libellv.so
 odm/lib64/libfastmessage.so
@@ -2475,7 +2476,12 @@ vendor/lib64/libssc_default_listener.so
 vendor/lib64/sensors.ssc.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
-# Sensors (Xiaomi)
+# Sensors Cit (Xiaomi)
+odm/bin/hw/vendor.xiaomi.sensor.citsensorservice@2.0-service
+odm/etc/init/vendor.xiaomi.sensor.citsensorservice@2.0-service.rc
+odm/etc/vintf/manifest/vendor.xiaomi.sensor.citsensorservice@2.0-service.xml
+odm/etc/cit_param_config.json
+odm/lib64/hw/vendor.xiaomi.sensor.citsensorservice@2.0-impl.so;DISABLE_CHECKELF
 vendor/lib64/vendor.xiaomi.sensor.citsensorservice@1.1.so
 vendor/lib64/vendor.xiaomi.sensor.citsensorservice@2.0.so
 
