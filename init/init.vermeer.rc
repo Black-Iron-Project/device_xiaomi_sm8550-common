@@ -86,6 +86,11 @@ on property:sys.boot_completed=1
     # Only owner can acces this node
     chmod 440 /proc/net/unix
 
+# Libperf
+on property:sys.boot_completed=1
+    # Enable PowerHAL hint processing
+    setprop vendor.powerhal.init 1
+
 service touch_report /odm/bin/touch_report
     disabled
     override
