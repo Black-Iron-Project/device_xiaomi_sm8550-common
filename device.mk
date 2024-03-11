@@ -297,7 +297,8 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service-qti
+    android.hardware.power-service.lineage-libperfmgr \
+    libqti-perfd-client \
 
 # PSI
 PRODUCT_PACKAGES += \
@@ -347,7 +348,13 @@ PRODUCT_SHIPPING_API_LEVEL := 33
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
+    hardware/google/interfaces \
+    hardware/google/pixel \
+    hardware/lineage/interfaces/power-libperfmgr \
+    hardware/qcom-caf/common/libqti-perfd-client \
     hardware/xiaomi \
+    kernel/xiaomi/sm8550 \
+    kernel/xiaomi/sm8550-modules \
     vendor/qcom/opensource/usb/etc
 
 # System properties
