@@ -2146,10 +2146,6 @@ vendor/bin/pd-mapper
 vendor/lib64/libpdmapper.so
 vendor/lib64/libpdnotifier.so
 
-# Performance
-vendor/etc/perf/powerhint.xml
-vendor/etc/powerhint.xml
-
 # Peripheral manager
 vendor/bin/pm-proxy
 vendor/bin/pm-service
