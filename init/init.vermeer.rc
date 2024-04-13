@@ -79,6 +79,10 @@ on property:vendor.post_boot.parsed=1
     # Set default thermal profile
     write /sys/class/thermal/thermal_message/sconfig 0
 
+    # Kill WALT CPU input boost
+    write /proc/sys/walt/input_boost/input_boost_freq "0 0 0 0 0 0 0"
+    write /proc/sys/walt/input_boost/input_boost_ms 0
+
 # Restrict access on this node
 on property:sys.boot_completed=1
     # STOP EATING MY BATTERY AFTER 100H OF UPTIME FUCK YOU
