@@ -264,6 +264,7 @@ PRODUCT_COPY_FILES += \
 # Overlay
 PRODUCT_PACKAGES += \
     CarrierConfigOverlayVermeer \
+    DeviceAsWebcamResVermeer \
     FrameworkResOverlayVermeer \
     SettingsOverlayPOCO \
     SettingsOverlayRedmi \

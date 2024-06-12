@@ -328,6 +328,7 @@ external_storage.sdcardfs.enabled=0
 persist.sys.fuse.passthrough.enable=true
 
 # USB
+ro.usb.uvc.enabled=true
 vendor.usb.rndis.func.name=gsi
 vendor.usb.rmnet.func.name=gsi
 vendor.usb.rmnet.inst.name=rmnet
