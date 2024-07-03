@@ -131,6 +131,7 @@ PRODUCT_PACKAGES += \
     XiaomiParts
 
 # Display
+TARGET_USE_YCRCB_CAMERA_ENCODE := true
 PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     vendor.qti.hardware.display.demura-service \
