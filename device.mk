@@ -336,6 +336,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors-service.xiaomi-multihal \
     sensors.dynamic_sensor_hal \
+    libsensorndkbridge \
     sensors.xiaomi.v2
 
 PRODUCT_COPY_FILES += \
