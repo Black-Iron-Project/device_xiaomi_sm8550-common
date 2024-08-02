@@ -135,6 +135,15 @@ TARGET_KERNEL_EXT_MODULES := \
 	qcom/opensource/bt-kernel \
 	nxp/opensource/driver
 
+BOOT_KERNEL_MODULES := $(strip $(shell cat $(COMMON_PATH)/modules.load.recovery))
+BOOT_KERNEL_MODULES += \
+    q6_pdr_dlkm.ko \
+    q6_notifier_dlkm.ko \
+    snd_event_dlkm.ko \
+    gpr_dlkm.ko \
+    spf_core_dlkm.ko \
+    adsp_loader_dlkm.ko \
+    qti_battery_charger.ko
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/modules.load.vendor_dlkm))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/modules.load.first_stage))
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD  := $(strip $(shell cat $(COMMON_PATH)/modules.load.recovery))
