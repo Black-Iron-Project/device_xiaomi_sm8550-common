@@ -1,5 +1,11 @@
 [
-   {
+{
+      "remote":"github",
+      "repository":"Black-Iron-Project/device_xiaomi_vermeer",
+      "target_path":"device/xiaomi/vermeer",
+      "branch":"v15"
+   }
+{
       "remote":"github",
       "repository":"LineageOS-Vermeer/android_hardware_qcom-caf_sm8550_gps",
       "target_path":"hardware/qcom-caf/sm8550/gps",
@@ -33,7 +39,7 @@
       "remote":"gitlab",
       "repository":"ralf979/proprietary_vendor_xiaomi_camera",
       "target_path":"vendor/xiaomi/camera",
-      "branch":"vauxite-sm8550"
+      "branch":"v15"
    }
 {
       "remote":"github",
