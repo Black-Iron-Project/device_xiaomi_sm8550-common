@@ -29,7 +29,7 @@
 # IR
 /dev/ir_spi u:object_r:ir_spi_device:s0
 
-#Dolby Data Files
+# Dolby Data Files
 /data/vendor/dolby(/.*)?                    u:object_r:vendor_data_file:s0
 
 # Media
@@ -37,6 +37,9 @@
 /vendor/bin/hw/vendor\.dolby\.hardware\.dms@2\.0-service                   u:object_r:hal_dms_default_exec:s0
 /vendor/bin/hw/dolbycodec2                                                 u:object_r:vendorcodec_exec:s0
 /vendor/bin/hw/vendor\.dolby\.media\.c2@1\.0-service                       u:object_r:mediacodec_exec:s0
+
+# Process and system statistics files
+/proc/stat u:object_r:proc_stat:s0
 
 # Ril
 /dev/smd8                                         u:object_r:vendor_radio_smd_device:s0
