@@ -8,5 +8,7 @@
 
 #include <mi_disp.h>
 
+#include <memory>
+
 bool readBool(int fd);
-disp_event_resp* parseDispEvent(int fd);
+std::shared_ptr<disp_event_resp> parseDispEvent(int fd);
