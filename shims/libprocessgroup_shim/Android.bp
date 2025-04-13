@@ -1,0 +1,19 @@
+cc_library_shared {
+    name: "libprocessgroup_shim_sm8550",
+    srcs: ["shim.cpp"],
+    shared_libs: ["liblog", "libbase"],
+    system_shared_libs: [],
+    vendor: true,
+
+    // Percorsi degli header
+    include_dirs: [
+        "/usr/include",
+        "/usr/include/x86_64-linux-gnu",
+    ],
+
+    // Percorso completo per il sysroot
+    cflags: [
+        "--sysroot=/usr/lib/gcc/x86_64-linux-gnu/12/include",  // Percorso effettivo del sysroot
+    ],
+}
+
