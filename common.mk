@@ -159,7 +159,6 @@ PRODUCT_PACKAGES += \
     camera.device@1.0-impl \
     libcamera2ndk_vendor \
     liblz4.vendor \
-    libprocessgroup_shim_sm8550 \
     vendor.qti.hardware.camera.aon@1.3.vendor \
     vendor.qti.hardware.camera.device@1.0.vendor \
     vendor.qti.hardware.camera.postproc@1.0.vendor

@@ -186,11 +186,6 @@ SOONG_CONFIG_SENSORS_XIAOMI_USES_DOUBLE_TAP_SENSOR := true
 SOONG_CONFIG_SENSORS_XIAOMI += USES_UDFPS_SENSOR
 SOONG_CONFIG_SENSORS_XIAOMI_USES_UDFPS_SENSOR := true
 
-# Shim
-TARGET_LD_SHIM_LIBS += \
-    /vendor/lib64/libprocessgroup_shim_sm8550.so:camera.qcom.so \
-    /vendor/lib64/libprocessgroup_shim_sm8550.so:libmialgo.so
-
 # Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
