@@ -50,15 +50,6 @@ BOARD_USES_ALSA_AUDIO := true
 TARGET_USES_QCOM_MM_AUDIO := true
 AUDIO_FEATURE_ENABLED_AGM_HIDL := true
 
-# Boot
-BOARD_BOOT_HEADER_VERSION := 4
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
-
-BOARD_INIT_BOOT_HEADER_VERSION := 4
-BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
-
-BOARD_RAMDISK_USE_LZ4 := true
-
 # Boot control
 SOONG_CONFIG_NAMESPACES += ufsbsg
 SOONG_CONFIG_ufsbsg += ufsframework
@@ -70,10 +61,6 @@ TARGET_NO_BOOTLOADER := true
 
 # Build
 BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
-# DTB
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
@@ -95,27 +82,74 @@ TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_xiaomi_sm8550
 TARGET_RECOVERY_DEVICE_MODULES := libinit_xiaomi_sm8550
 
 # Kernel
-BOARD_BOOTCONFIG := \
-    androidboot.hardware=qcom \
-    androidboot.init_fatal_reboot_target=recovery \
-    androidboot.usbcontroller=a600000.dwc3
+BOARD_KERNEL_BASE        := 0x00000000
+BOARD_KERNEL_PAGESIZE    := 4096
 
-BOARD_KERNEL_CMDLINE := \
-    kasan=off \
-    disable_dma32=on \
-    rcu_nocbs=all \
-    rcutree.enable_rcu_lazy=1 \
-    mtdoops.fingerprint=$(LINEAGE_VERSION)
+BOARD_KERNEL_CMDLINE := video=vfb:640x400,bpp=32,memsize=3072000 disable_dma32=on swinfo.fingerprint=$(LINEAGE_VERSION) mtdoops.fingerprint=$(LINEAGE_VERSION)
 
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_USES_GENERIC_KERNEL_IMAGE := true
-TARGET_HAS_GENERIC_KERNEL_HEADERS := true
+BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.memcg=1 androidboot.usbcontroller=a600000.dwc3 androidboot.console=ttyMSM0
+
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_RAMDISK_USE_LZ4 := true
+
+BOARD_BOOT_HEADER_VERSION := 4
+BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_MKBOOTIMG_INIT_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
+
+BOARD_KERNEL_IMAGE_NAME := Image
+TARGET_KERNEL_SOURCE := kernel/xiaomi/sm8550
+TARGET_KERNEL_CONFIG := \
+    gki_defconfig \
+    vendor/kalama_GKI.config \
+    vendor/$(PRODUCT_DEVICE)_GKI.config
+KERNEL_LTO := none
+
+BOARD_USES_QCOM_MERGE_DTBS_SCRIPT := true
+TARGET_NEEDS_DTBOIMAGE := true
+
+# Kernel (modules)
+TARGET_KERNEL_EXT_MODULE_ROOT := kernel/xiaomi/sm8550-modules
+TARGET_KERNEL_EXT_MODULES := \
+	qcom/opensource/mmrm-driver \
+	qcom/opensource/mm-drivers/hw_fence \
+	qcom/opensource/mm-drivers/msm_ext_display \
+	qcom/opensource/mm-drivers/sync_fence \
+	qcom/opensource/audio-kernel \
+	qcom/opensource/camera-kernel \
+	qcom/opensource/dataipa/drivers/platform/msm \
+	qcom/opensource/datarmnet/core \
+	qcom/opensource/datarmnet-ext/aps \
+	qcom/opensource/datarmnet-ext/offload \
+	qcom/opensource/datarmnet-ext/shs \
+	qcom/opensource/datarmnet-ext/perf \
+	qcom/opensource/datarmnet-ext/perf_tether \
+	qcom/opensource/datarmnet-ext/sch \
+	qcom/opensource/datarmnet-ext/wlan \
+	qcom/opensource/securemsm-kernel \
+	qcom/opensource/display-drivers/msm \
+	qcom/opensource/eva-kernel \
+	qcom/opensource/video-driver \
+	qcom/opensource/graphics-kernel \
+	qcom/opensource/wlan/platform \
+	qcom/opensource/wlan/qcacld-3.0/.kiwi_v2 \
+	qcom/opensource/bt-kernel \
+	nxp/opensource/driver
+
+BOOT_KERNEL_MODULES := $(strip $(shell cat $(COMMON_PATH)/modules.load.recovery))
+BOOT_KERNEL_MODULES += \
+    q6_pdr_dlkm.ko \
+    q6_notifier_dlkm.ko \
+    snd_event_dlkm.ko \
+    gpr_dlkm.ko \
+    spf_core_dlkm.ko \
+    adsp_loader_dlkm.ko \
+    qti_battery_charger.ko
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/modules.load.vendor_dlkm))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/modules.load.first_stage))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD  := $(strip $(shell cat $(COMMON_PATH)/modules.load.recovery))
 
 # Lineage Health
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
-
-# Kernel Modules
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/modules.load.recovery))
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true

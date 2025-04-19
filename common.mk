@@ -29,7 +29,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 ENABLE_AB := true
 ENABLE_VIRTUAL_AB := true
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/android_t_baseline.mk)
 
 PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := gz
@@ -314,10 +313,8 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/charger_fstab.qti:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/charger_fstab.qti \
     $(LOCAL_PATH)/init/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
-
-# Kernel
-include $(LOCAL_PATH)/kernel/kernel-platform.mk
 
 # Keymaster
 PRODUCT_PACKAGES += \

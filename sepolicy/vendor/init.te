@@ -11,3 +11,9 @@ allow init debugfs_tracing_debug:dir mounton;
 allow init vendor_sysfs_memory:file w_file_perms;
 
 allow init self:netlink_kobject_uevent_socket { read create bind getopt setopt };
+
+recovery_only(`
+allow init init:capability { sys_module };
+allow init proc:file w_file_perms;
+allow init rootfs:system { module_load };
+')
