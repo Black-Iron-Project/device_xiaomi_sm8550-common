@@ -2522,6 +2522,7 @@ vendor/lib64/vendor.qti.esepowermanager@1.0.so
 vendor/lib64/vendor.qti.esepowermanager@1.1.so
 
 # Sensors
+odm/lib64/libsensor_cal@2.0.so
 odm/lib64/sensors.touch.detect.so
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
 vendor/bin/init.qcom.sensors.sh
@@ -2561,6 +2562,12 @@ odm/etc/cit_param_config.json
 odm/lib64/hw/vendor.xiaomi.sensor.citsensorservice@2.0-impl.so;DISABLE_CHECKELF
 vendor/lib64/vendor.xiaomi.sensor.citsensorservice@1.1.so
 vendor/lib64/vendor.xiaomi.sensor.citsensorservice@2.0.so
+
+# Sensor Communicate
+odm/bin/hw/vendor.xiaomi.sensor.communicate@1.0-service
+odm/etc/init/vendor.xiaomi.sensor.communicate@1.0-service.rc
+odm/etc/vintf/manifest/vendor.xiaomi.sensor.communicate@1.0_manifest.xml
+vendor/lib64/vendor.xiaomi.sensor.communicate@1.0.so
 
 # Sensors config
 odm/etc/sensors/config/ak7323.json
