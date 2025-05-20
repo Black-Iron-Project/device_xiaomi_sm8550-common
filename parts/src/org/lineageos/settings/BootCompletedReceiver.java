@@ -35,6 +35,7 @@ import android.view.Display.HdrCapabilities;
 import org.lineageos.settings.thermal.ThermalUtils;
 import org.lineageos.settings.thermal.ThermalTileService;
 import org.lineageos.settings.refreshrate.RefreshUtils;
+import org.lineageos.settings.turbocharging.TurboChargingService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final boolean DEBUG = false;
@@ -80,6 +81,16 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
         // Start Refresh Rate Service
         RefreshUtils.startService(context);
+    }
+
+    private void startTurboChargingService(Context context) {
+        try {
+            Intent turboChargingIntent = new Intent(context, TurboChargingService.class);
+            context.startService(turboChargingIntent);
+            if (DEBUG) Log.d(TAG, "Started TurboChargingService");
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to start TurboChargingService", e);
+        }
     }
 
     private void overrideHdrTypes(Context context) {

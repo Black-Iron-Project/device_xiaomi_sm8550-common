@@ -36,6 +36,9 @@ import org.lineageos.settings.gamebar.GameBarTileService;
 import org.lineageos.settings.thermal.ThermalSettingsActivity;
 import org.lineageos.settings.thermal.ThermalTileService;
 
+import org.lineageos.settings.turbocharging.TurboChargingTile;
+import org.lineageos.settings.turbocharging.TurboChargingActivity;
+
 public final class TileHandlerActivity extends Activity {
     private static final String TAG = "TileHandlerActivity";
 
@@ -47,6 +50,7 @@ public final class TileHandlerActivity extends Activity {
         TILE_ACTIVITY_MAP.put(HbmTileService.class.getName(), AutoHbmActivity.class);
         TILE_ACTIVITY_MAP.put(GameBarTileService.class.getName(), GameBarSettingsActivity.class);
         TILE_ACTIVITY_MAP.put(ThermalTileService.class.getName(), ThermalSettingsActivity.class);
+        TILE_ACTIVITY_MAP.put(TurboChargingTile.class.getName(), TurboChargingActivity.class);
     }
 
     @Override
