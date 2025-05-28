@@ -11,8 +11,15 @@ $(call inherit-product, build/make/target/product/core_64_bit_only.mk)
 # Inherit device-specific configurations
 $(call inherit-product, device/xiaomi/vermeer/device.mk)
 
-# Inherit LineageOS configurations
+# Inherit Blackiron configurations
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+# BLKI
+ WITH_GMS := true
+ TARGET_HAS_UDFPS := true
+ TARGET_ENABLE_BLUR := true
+ BLACKIRON_BUILDTYPE := Official
+ BLACKIRON_MAINTAINER := Ralf979
 
 PRODUCT_DEVICE := vermeer
 PRODUCT_NAME := lineage_vermeer
