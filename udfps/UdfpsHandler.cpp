@@ -11,6 +11,7 @@
 
 #include <fstream>
 
+#include <linux/xiaomi_touch.h>
 #include "UdfpsHandler.h"
 
 #define COMMAND_NIT 10
@@ -24,6 +25,7 @@
 #define FOD_STATUS_PATH "/sys/class/touch/touch_dev/fod_press_status"
 #define FOD_STATUS_OFF 0
 #define FOD_STATUS_ON 1
+#define TOUCH_DEV_PATH "/dev/xiaomi-touch"
 
 #define DISP_PARAM_PATH "/sys/devices/virtual/mi_display/disp_feature/disp-DSI-0/disp_param"
 #define DISP_PARAM_LOCAL_HBM_MODE "9"
